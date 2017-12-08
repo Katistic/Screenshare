@@ -6,7 +6,7 @@ sockets = []
 
 def Loop():
     screen.Get()
-    File = open("dunno yet", "rb")
+    File = open("screenshot.png", "rb")
     Data = File.read()
     File.close()
     
