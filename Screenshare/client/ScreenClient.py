@@ -22,9 +22,16 @@ class GUI:
         self.strt_btn = Button(self.master, command = self.Start, text = "Start!")
         self.strt_btn.pack()
 
+        self.buff = 0
+
     def Loop(self):
         Data = self.s.recv(2560000)
-        print("Got picture from host.")
+        if self.buff == 0:
+            self.buff = 1
+            print("Buffer.")
+            return
+        else:
+            print("Got picture from host.")
 
         if self.pic == 0:
             self.pic = 1
@@ -43,6 +50,8 @@ class GUI:
         File = open("Picture"+str(self.pic)+".png", "wb")
         File.write(Data)
         File.close()
+
+        time.sleep(.1)
 
         print("Displaying new image.")
         img = PhotoImage(file = "Picture"+str(self.pic)+".png")
