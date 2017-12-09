@@ -23,7 +23,8 @@ def Loop():
             try:
                 x.send(Data)
             except:
-                pprint("Failed to send.")
+                sockets.remove(x)
+                pprint("A client disconnected.")
 
 
 def cls():
