@@ -7,13 +7,18 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 port = int(input("Port: "))
 host = input("Hostname: ")
 
+print("Created socket.")
+
 try:
     s.connect((host, port))
 except:
     exit()
 
+print("Connected to host.")
+    
 class GUI:
     def __init__(self, master, s):
+        print("Loading UI")
         self.master = master
         master.title = "Client"
         self.s = s
@@ -24,27 +29,37 @@ class GUI:
 
         self.buff = 0
 
+    def Remove(self, path):
+        try:
+            os.remove(path)
+            print("Removed file: "+path)
+        except:
+            print("Could not remove file: "+path)
+    
+    def NextPic(p):
+        if p == 0:
+            return 1
+        elif p == 1:
+            return 2
+        elif p == 2:
+            return 0
+
     def Loop(self):
+        remThread = threading.Thread(target = self.Remove, args = ("Picture"+str(self.NextPic(self.pic))+".png"))
+        remThread.start()
+        
+        self.Remove("Picture"+str(self.pic)+".png")
+        
+        print("Waiting for host...")
         Data = self.s.recv(2560000)
         if self.buff == 0:
             self.buff = 1
             print("Buffer.")
             return
         else:
-            print("Got picture from host.")
+            print("Got data from host.")
 
-        if self.pic == 0:
-            self.pic = 1
-        elif self.pic == 1:
-            self.pic = 2
-        elif self.pic == 2:
-            self.pic = 0
-
-        try:
-            os.remove("Picture"+str(self.pic)+".png")
-            print("Removed old picture.")
-        except:
-            pass
+        self.pic = self.NextPic(self.pic)
 
         print("Generating new picture...")
         File = open("Picture"+str(self.pic)+".png", "wb")
@@ -57,7 +72,7 @@ class GUI:
             self.label.configure(image = img)
             self.label.image = img
         except:
-            print("Failed")
+            print("Could not display new image!")
         
 
     def Looper(self):
@@ -72,7 +87,9 @@ class GUI:
 
         thread = threading.Thread(target = self.Looper)
         thread.start()
-
+        
+        print("Start!")
+        
 root = Tk()
 root.attributes("-fullscreen", True)
 gui = GUI(root, s)
