@@ -26,7 +26,6 @@ class GUI:
 
     def Loop(self):
         Data = self.s.recv(2560000)
-        Data += self.s.recv(2560000)
         if self.buff == 0:
             self.buff = 1
             print("Buffer.")
@@ -52,12 +51,13 @@ class GUI:
         File.write(Data)
         File.close()
 
-        time.sleep(.1)
-
-        print("Displaying new image.")
-        img = PhotoImage(file = "Picture"+str(self.pic)+".png")
-        self.label.configure(image = img)
-        self.label.image = img
+        print("Displaying new image...")
+        try:
+            img = PhotoImage(file = "Picture"+str(self.pic)+".png")
+            self.label.configure(image = img)
+            self.label.image = img
+        except:
+            print("Failed")
         
 
     def Looper(self):
