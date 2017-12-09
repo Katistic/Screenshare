@@ -1,6 +1,7 @@
 import socket
 import threading
 import screen
+import os
 
 sockets = []
 
@@ -9,6 +10,7 @@ def Loop():
     File = open("screenshot.png", "rb")
     Data = File.read()
     File.close()
+    os.remove("screenshot.png")
     
     for x in sockets():
         x.send(Data)
