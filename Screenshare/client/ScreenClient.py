@@ -74,5 +74,6 @@ class GUI:
         thread.start()
 
 root = Tk()
+root.attributes("-fullscreen", True)
 gui = GUI(root, s)
 root.mainloop()
