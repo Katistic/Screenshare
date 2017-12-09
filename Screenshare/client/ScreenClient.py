@@ -26,6 +26,7 @@ class GUI:
 
     def Loop(self):
         Data = self.s.recv(2560000)
+        Data += self.s.recv(2560000)
         if self.buff == 0:
             self.buff = 1
             print("Buffer.")
