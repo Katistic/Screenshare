@@ -13,7 +13,7 @@ port = 4231
 def Loop():
     while 1:
         screen.Get()
-        time.sleep(.1)
+        #time.sleep(.1)
         File = open("screenshot.png", "rb")
         Data = File.read()
         File.close()
