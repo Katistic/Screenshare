@@ -21,11 +21,11 @@ def Loop():
         #os.remove("screenshot.png")
         
         for x in sockets:
-            try:
-                x.send(Data) # * Will this work?
-            except:
-                sockets.remove(x)
-                pprint("A client disconnected.")
+           # try:
+            x.send(Data) # * Will this work?
+            #except:
+            #    sockets.remove(x)
+            #    pprint("A client disconnected.")
 
 
 def cls():
