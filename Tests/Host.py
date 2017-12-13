@@ -1,8 +1,9 @@
-#import socket
+import socket
 import threading
 import screen
 import time
 import os
+import wx
 
 sockets = []
 output = []
