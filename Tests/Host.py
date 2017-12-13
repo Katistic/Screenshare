@@ -1,4 +1,4 @@
-import socket
+#import socket
 import threading
 import screen
 import time
@@ -12,16 +12,16 @@ port = 4231
 
 def Loop():
     while 1:
-        screen.Get()
+        Data = screen.Get() # * Will this work?
         #time.sleep(.1)
         #File = open("screenshot.png", "rb")
         #Data = File.read()
         #File.close()
-        os.remove("screenshot.png")
+        #os.remove("screenshot.png")
         
         for x in sockets:
             try:
-                x.send(Data)
+                x.send(Data) # * Will this work?
             except:
                 sockets.remove(x)
                 pprint("A client disconnected.")
