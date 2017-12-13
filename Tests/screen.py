@@ -1,3 +1,9 @@
+import wx
+
+app = wx.App()
+screen = wx.ScreenDC()
+size = screen.GetSize()
+
 def Get():
     bmp = wx.Bitmap(size[0], size[1])
     mem = wx.MemoryDC()
