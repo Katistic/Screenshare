@@ -11,5 +11,6 @@ def Get():
     mem.Blit(0, 0, size[0], size[1], screen, 0, 0)
     mem.SelectObject(wx.NullBitmap)
     img = bmp.ConvertToImage()
-    bmp.SaveFile('screenshot.png', wx.BITMAP_TYPE_PNG)
-    del mem
+    return img
+    #del mem
+    
