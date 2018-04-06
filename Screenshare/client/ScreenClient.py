@@ -3,6 +3,7 @@ import threading
 import socket
 import time
 import os
+import wx
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 port = int(input("Port: "))
@@ -57,22 +58,23 @@ class GUI:
         else:
             print("Got data from host.")
 
-        self.pic = self.NextPic((self.pic))
+        #self.pic = self.NextPic((self.pic))
         
-        remThread = threading.Thread(target = self.Remove, args = (["Picture"+str(self.pic+1)+".png"]))
-        remThread.start()
-        print("\n")
-        self.Remove("Picture"+str(self.pic)+".png")
-        print("\n")
+        #remThread = threading.Thread(target = self.Remove, args = (["Picture"+str(self.pic+1)+".png"]))
+        #remThread.start()
+        #print("\n")
+        #self.Remove("Picture"+str(self.pic)+".png")
+        #print("\n")
 
-        print("Generating new image: Picture"+str(self.pic)+".png")
-        File = open("Picture"+str(self.pic)+".png", "wb")
-        File.write(Data)
-        File.close()
+        #print("Generating new image: Picture"+str(self.pic)+".png")
+        #File = open("Picture"+str(self.pic)+".png", "wb")
+        #File.write(Data)
+        #File.close()
 
-        print("Displaying image: Picture"+str(self.pic)+".png")
+        #print("Displaying image: Picture"+str(self.pic)+".png")
         try:
-            img = PhotoImage(file = "Picture"+str(self.pic)+".png")
+            img = wx.Image.Create(size = wx.ScreenDC().GetSize()), Data)
+            img = PhotoImage(\)
             self.label.configure(image = img)
             self.label.image = img
         except:
