@@ -12,12 +12,12 @@ port = 4231
 
 def Loop():
     while 1:
-        screen.Get()
+        Data = screen.Get()
         #time.sleep(.1)
-        File = open("screenshot.png", "rb")
-        Data = File.read()
-        File.close()
-        os.remove("screenshot.png")
+        #File = open("screenshot.png", "rb")
+        #Data = File.read()
+        #File.close()
+        #os.remove("screenshot.png")
         
         for x in sockets:
             try:
