@@ -74,7 +74,7 @@ class GUI:
         #print("Displaying image: Picture"+str(self.pic)+".png")
         try:
             img = wx.Image.Create(size = wx.ScreenDC().GetSize()), Data)
-            img = PhotoImage(\)
+            img = PhotoImage(image=img)
             self.label.configure(image = img)
             self.label.image = img
         except:
