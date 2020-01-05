@@ -1,1 +1,0 @@
-git+git://github.com/intxcc/pyaudio_portaudio@releases/tag/1.1.1#egg=pyaudio
